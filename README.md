@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anime Recommendation App (Next.js Frontend)
 
-## Getting Started
+This is the official frontend for the Anime Recommendation App, built with Next.js and deployed on Vercel.
 
-First, run the development server:
+It provides a user-friendly interface for users to rate anime and receive personalized recommendations based on their ratings.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Try the app live:** [**https://anime-recommendation-next-app.vercel.app/**](https://anime-recommendation-next-app.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Browse & Search:** Find any anime from the database.
+* **Rate Anime:** Give ratings to anime you've already watched to build your taste profile.
+* **Get Recommendations:** Receive a custom list of anime recommendations based on the ratings you've provided.
 
-## Learn More
+## 🛠️ How It Works (Architecture)
 
-To learn more about Next.js, take a look at the following resources:
+This is a decoupled frontend application that works by communicating with a separate, deployed machine learning backend.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Frontend:** A **Next.js (React)** application that handles all user interaction and UI.
+* **Backend (ML Model):** This app fetches recommendations by making API calls to a **FastAPI** server, which hosts the trained ML model. The backend is located in a separate repository and is deployed on Render.
+* **Deployment:** The Next.js app is continuously deployed on **Vercel**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔗 Related Repositories
 
-## Deploy on Vercel
+* **MLOps & Backend API:** [FrienDotJava/anime-recommendation-app](https://github.com/FrienDotJava/anime-recommendation-app)
+* **Live Model API Docs:** [https://fastapi-example-265p.onrender.com/docs](https://fastapi-example-265p.onrender.com/docs)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Running Locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/FrienDotJava/anime-recommendation-next-app.git](https://github.com/FrienDotJava/anime-recommendation-next-app.git)
+    cd anime-recommendation-next-app
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+
+4.  **Open your browser:**
+    Navigate to [http://localhost:3000](http://localhost:3000). The app will run locally and make requests to the live, deployed FastAPI backend.
