@@ -1,5 +1,6 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
+type ProxyParams = { params: Promise<{ path: string[] }> };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "";
 
@@ -11,9 +12,11 @@ function joinUrl(base: string, pathParts: string[]) {
 }
 
 
-export async function GET(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function GET(req: NextRequest, ctx: ProxyParams) {
+    const { path } = await ctx.params;
+
     if (!API_BASE) return new Response("API base not set", { status: 500 });
-    const target = new URL(joinUrl(API_BASE, params.path));
+    const target = new URL(joinUrl(API_BASE, path));
     // preserve search params
     req.nextUrl.searchParams.forEach((v, k) => target.searchParams.set(k, v));
 
@@ -24,9 +27,11 @@ export async function GET(req: NextRequest, { params }: { params: { path: string
 }
 
 
-export async function POST(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function POST(req: NextRequest, ctx: ProxyParams) {
+    const { path } = await ctx.params;
+
     if (!API_BASE) return new Response("API base not set", { status: 500 });
-    const target = joinUrl(API_BASE, params.path);
+    const target = joinUrl(API_BASE, path);
     const body = await req.text();
 
 
